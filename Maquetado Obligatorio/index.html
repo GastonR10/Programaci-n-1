@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Obligatorio P1</title>
+    <link rel="stylesheet" href="./css/estilo.css" />
+    <script src="personas.js"></script>
+    <script src="locales.js"></script>
+    <script src="reservas.js"></script>
+    <script src="util.js"></script>
+    <script src="index.js"></script>
+  </head>
+
+  <body>
+    <div id="contenedor">
+      <div id="cabezal" class="clearfix">
+        <img id="logo" src="img/icon.png" alt="logo" />
+
+        <ul id="navPrincipal">
+          <li class="sinLogin" id="menuPersona">
+            <a>Persona</a>
+          </li>
+          <li class="sinLogin" id="loginLocal">
+            <a>Local</a>
+          </li>
+          <li class="menu PersonaPaso1" id="ingresar">
+            <a>Ingresar</a>
+          </li>
+          <li class="menu PersonaPaso1" id="registrarse">
+            <a>Registrarse</a>
+          </li>
+          <li class="menu PersonaLogueada" id="realizarReserva">
+            <a>Realizar reserva</a>
+          </li>
+          <li class="menu PersonaLogueada" id="verReservasPendientes">
+            <a>Reservas pendientes</a>
+          </li>
+          <li class="menu PersonaLogueada" id="verReservasFinalizadas">
+            <a>Reservas finalizadas</a>
+          </li>
+          <li class="menu PersonaLogueada" id="verEstadisticasPersona">
+            <a>Estadisticas</a>
+          </li>
+          <li class="menu LocalLogueado" id="verDisponibilidad">
+            <a>Disponibilidad</a>
+          </li>
+          <li class="menu LocalLogueado" id="verReservasLocal">
+            <a>Reservas</a>
+          </li>
+          <li class="menu LocalLogueado" id="modCupoMaximo">
+            <a>Modificar cupo máximo</a>
+          </li>
+          <li class="menu LocalLogueado" id="verEstadisticasLocal">
+            <a>Estadisticas</a>
+          </li>
+        </ul>
+        <div class="menu cerrarSesion" id="aux">
+          <a id="salir">Salir</a>
+        </div>
+        <!-- FIN AUX -->
+      </div>
+      <!-- FIN CABEZAL -->
+
+      <div id="contenido">
+        <div class="seccion ingresar">
+          <label for="ingUsuario">Usuario: </label>
+          <input type="text" id="ingUsuario" value="Lucasx" /><br />
+
+          <label for="ingPassword">Contraseña:</label>
+          <input type="password" id="ingPassword" value="Lucas12" /><br />
+
+          <label for="btnIng"></label>
+          <input type="button" id="btnIng" value="Ingresar" /><br />
+        </div>
+
+        <div class="seccion registro">
+          <label for="regNombre">Nombre: </label>
+          <input type="text" id="regNombre" /><br /><br />
+
+          <label for="regUsuario">Usuario: </label>
+          <input type="text" id="regUsuario" /><br />
+          <span id="registroError"></span><br />
+
+          <label for="regPassword">Contraseña:</label>
+          <input type="password" id="regPassword" /><br />
+          <span id="passwordError"></span><br />
+
+          <label for="btnReg"></label>
+          <input type="button" id="btnReg" value="Registrarse" /><br />
+        </div>
+
+        <div class="seccion ingLocal">
+          <label for="ingUsuarioLocal">Usuario: </label>
+          <input type="text" id="ingUsuarioLocal" value="Mediterraneox" /><br />
+
+          <label for="ingPasswordLocal">Contraseña:</label>
+          <input type="password" id="ingPasswordLocal" value="Medi12" /><br />
+
+          <label for="btnIngLocal"></label>
+          <input type="button" id="btnIngLocal" value="Ingresar" /><br />
+        </div>
+
+        <div class="seccion reservasPersona">
+          <h3>Realizar Reserva</h3>
+          <label for="selectLocales">Seleccionar Local</label>
+          <select id="selectLocales"></select
+          ><br />
+
+          <label for="cupos">Cantidad de personas</label>
+          <input type="number" min="1" id="cupos" /><br />
+
+          <label for="btnReservar"> </label>
+          <input type="button" id="btnReservar" value="Reservar" /><br />
+        </div>
+
+        <div class="seccion reservasPendientes">
+          <h3>Reservas Pendientes</h3>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Foto</th>
+                <th>Nombre Local</th>
+                <th>Cupos</th>
+                <th>Cancelar</th>
+              </tr>
+            </thead>
+            <tbody id="tblPendientesPersona"></tbody>
+          </table>
+        </div>
+
+        <div class="seccion reservasFinalizadas">
+          <h3>Reservas Finalizadas</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>N° Reserva</th>
+                <th>Foto</th>
+                <th>Nombre Local</th>
+                <th>Cupos</th>
+                <th>Calificar</th>
+              </tr>
+            </thead>
+            <tbody id="tblFinalizadasPersona"></tbody>
+          </table>
+          <tfoot>
+            <input type="button" value="Calificar" id="btnCalificar" />
+          </tfoot>
+
+          <h3>Reservas Calificadas</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>N° Reserva</th>
+                <th>Foto</th>
+                <th>Nombre Local</th>
+                <th>Cupos</th>
+                <th>Calificación</th>
+              </tr>
+            </thead>
+            <tbody id="tblCalificadasPersona"></tbody>
+          </table>
+        </div>
+
+        <div class="seccion estadisticasPersona">
+          <h3>Estadísticas de Usuario</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Local</th>
+                <th>Cantidad de Reservas</th>
+                <th>Total de Reservas del Local</th>
+                <th>Porcentaje</th>
+              </tr>
+            </thead>
+            <tbody id="tblEstadisticasPersona"></tbody>
+          </table>
+          <br /><br />
+          <h3>Local Favorito</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Local</th>
+                <th>Cantidad de Reservas</th>
+              </tr>
+            </thead>
+            <tbody id="tblLocalFavorito"></tbody>
+          </table>
+        </div>
+
+        <div class="seccion disponibilidad">
+          <h3>Disponibilidad</h3>
+          <p id="estadoActual"></p>
+          <select name="estadoLocal" id="estado">
+            <option value="">Seleccionar...</option>
+            <option value="habilitado">Habilitado</option>
+            <option value="deshabilitado">Deshabilitado</option>
+          </select>
+          <input type="button" value="Aplicar" id="btnHabilitar" />
+        </div>
+
+        <div class="seccion reservasLocal">
+          <h3>Reservas Local</h3>
+          <input
+            type="text"
+            id="buscador"
+            placeholder="Ingresar nombre del cliente.."
+          />
+          <input type="button" id="btnBuscador" value="Buscar" />
+          <table>
+            <thead>
+              <tr>
+                <th>N° Reserva</th>
+                <th>Nombre Persona</th>
+                <th>Cupos</th>
+                <th>Cancelar</th>
+              </tr>
+            </thead>
+            <tbody id="tblPendientesLocal"></tbody>
+          </table>
+        </div>
+
+        <div class="seccion estadisticasLocal">
+          <h3>Estadisticas Local</h3>
+          Porcentaje de ocupacion: <span id="ocupacion"></span> <br /><br />
+          Promedio de calificaciones: <span id="promedio"></span><br /><br />
+          Reservas pendientes: <span id="pendientes"></span><br /><br />
+          Reservas finalizadas: <span id="finalizadas"></span><br /><br />
+
+          <h3>Promedio todos los locales</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Local</th>
+                <th>Promedio de calificaciones</th>
+              </tr>
+            </thead>
+            <tbody id="tblPromedios"></tbody>
+          </table>
+        </div>
+
+        <div class="seccion modCupoMaximo">
+          Cupos disponibles :
+          <span id="cuposActuales"></span>
+          <br /><br />
+          Cupos máximo actual :
+          <span id="cupoMaxActual"></span>
+          <br /><br />
+
+          <label for="modMaximo"> Modificar cupo máximo </label>
+          <input type="number" id="modMaximo" />
+          <input type="button" id="btnModMaximo" value="Modificar" /><br />
+        </div>
+
+        <!--FIN ELEMENTOS-->
+      </div>
+      <!-- FIN CONTENIDO -->
+      <div id="pie">
+        <a href="https://www.ort.edu.uy">Footer</a>
+      </div>
+      <!-- FIN PIE -->
+    </div>
+    <!-- FIN CONTENEDOR -->
+  </body>
+</html>
